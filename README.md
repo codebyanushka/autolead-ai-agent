@@ -1,41 +1,148 @@
-# AutoLead AI
+# AutoLead AI — Autonomous Lead Generation Agent
 
-AutoLead AI is an autonomous web agent that performs real tasks on the web.  
-The agent can search for businesses online, navigate websites, extract contact emails, and assist in automating outreach workflows.
+> An AI-powered browser agent that autonomously searches businesses, navigates websites, and extracts contact information — turning hours of manual prospecting into seconds.
 
-## Problem
+---
 
-Businesses often spend hours manually searching for leads, visiting websites, and collecting contact information for outreach.  
-This process is repetitive and time-consuming.
+## The Problem
 
-## Solution
+Sales and outreach teams spend **3–5 hours daily** manually searching for leads — Googling businesses, opening websites one by one, hunting for contact emails. It's repetitive, slow, and doesn't scale.
 
-AutoLead AI automates this process using an AI-powered browser agent that can:
+## The Solution
 
-- Search for businesses on the web
-- Navigate business websites
-- Extract contact email addresses
-- Assist with automated outreach
+AutoLead AI is a fully autonomous LLM-powered agent that does this end-to-end:
 
-## How it works
+1. Takes a natural language query (e.g. *"AI startups in Bangalore"*)
+2. Searches the web for matching businesses
+3. Navigates each business website autonomously
+4. Extracts contact emails and decision-maker info
+5. Outputs a structured lead list — ready for outreach
 
-1. The agent opens a search engine.
-2. It searches for businesses based on a user query.
-3. The agent navigates the business websites.
-4. It extracts contact email addresses from the page.
+---
+
+## Architecture
+
+```
+User Query (natural language)
+        ↓
+LLM Query Planner — breaks query into search terms
+        ↓
+Browser Automation Agent
+  ├── Web Search → Top N business results
+  ├── Website Navigator → Crawls each site
+  └── Email Extractor → Finds contact info
+        ↓
+TypeScript Config Layer — pipeline management + structured output parsing
+        ↓
+Structured Output → leads list (name, website, email, source)
+```
+
+---
 
 ## Tech Stack
 
-- Python
-- AI Web Agents
-- Browser Automation
+| Layer | Technology |
+|-------|-----------|
+| Agent Core | Python |
+| LLM | LLM Agents + Prompt Engineering |
+| Automation | Browser Automation |
+| Pipeline Config | TypeScript |
+| Output | Structured JSON / CSV |
+| Containerization | Docker |
 
-## Demo
+---
 
-The system demonstrates how AI agents can perform real-world workflows directly on the live web.
+## Features
 
-## Future Improvements
+- **Natural language input** — describe your target market in plain English
+- **Autonomous navigation** — agent visits websites without human input
+- **Intelligent email extraction** — finds contact pages, about pages, footer emails
+- **Scalable pipeline** — TypeScript config layer for managing multiple runs
+- **Structured output** — clean JSON/CSV ready for CRM import
 
-- Automated lead database
-- Outreach automation
-- Dashboard for managing leads
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.11+
+- Docker (optional)
+
+### Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/codebyanushka/Autolead-ai-agent.git
+cd Autolead-ai-agent
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Set up environment variables
+cp .env.example .env
+# Add your API keys to .env
+```
+
+### Run
+
+```bash
+python src/main.py --query "fintech startups in Mumbai"
+```
+
+---
+
+## Environment Variables
+
+```env
+LLM_API_KEY=your_key_here
+BROWSER_HEADLESS=true
+MAX_RESULTS=20
+OUTPUT_FORMAT=json
+```
+
+---
+
+## Example Output
+
+```json
+[
+  {
+    "company": "Example Corp",
+    "website": "https://example.com",
+    "email": "contact@example.com",
+    "source": "Contact page"
+  }
+]
+```
+
+---
+
+## Future Roadmap
+
+- [ ] Automated outreach email generation (LLM-powered)
+- [ ] Lead scoring based on company size + relevance
+- [ ] CRM integrations (HubSpot, Notion, Sheets)
+- [ ] Dashboard for managing and tracking leads
+- [ ] Multi-threaded parallel crawling for 10x speed
+
+---
+
+## Use Cases
+
+- **Sales teams** — build prospect lists in minutes
+- **Recruiters** — find hiring managers at target companies
+- **Founders** — research competitors and potential partners
+- **Marketers** — identify businesses for B2B campaigns
+
+---
+
+## Author
+
+**Anushka Tiwari** — Full-Stack Developer & AI Engineer
+
+[GitHub](https://github.com/codebyanushka) · [LinkedIn](https://linkedin.com/in/anushkaatiwarii)
+
+---
+
+*Built to eliminate repetitive manual work using autonomous AI agents.*
